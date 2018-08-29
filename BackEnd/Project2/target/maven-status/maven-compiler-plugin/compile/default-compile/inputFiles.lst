@@ -1,0 +1,17 @@
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/web/CommentCtrl.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/repo/UserRepo.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/web/PageCtrl.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/service/TagService.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/repo/PageRepo.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/service/PageService.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/repo/TagRepo.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/beans/User.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/beans/Page.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/beans/Comments.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/service/CommentService.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/Project2Application.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/repo/CommentRepo.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/web/TagCtrl.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/web/LoginCtrl.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/service/UserService.java
+/home/dralex/my_git_repo/Project2SpringRestAPI/BackEnd/Project2/src/main/java/com/revature/beans/Tag.java

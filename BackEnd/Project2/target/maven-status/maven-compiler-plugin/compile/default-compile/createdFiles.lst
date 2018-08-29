@@ -1,0 +1,17 @@
+com/revature/repo/TagRepo.class
+com/revature/repo/PageRepo.class
+com/revature/service/TagService.class
+com/revature/web/TagCtrl.class
+com/revature/beans/Page.class
+com/revature/web/CommentCtrl.class
+com/revature/repo/CommentRepo.class
+com/revature/repo/UserRepo.class
+com/revature/service/CommentService.class
+com/revature/beans/Comments.class
+com/revature/beans/User.class
+com/revature/service/UserService.class
+com/revature/web/LoginCtrl.class
+com/revature/web/PageCtrl.class
+com/revature/service/PageService.class
+com/revature/beans/Tag.class
+com/revature/Project2Application.class
