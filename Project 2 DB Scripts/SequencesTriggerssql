@@ -1,0 +1,49 @@
+-- New user sequence
+
+CREATE SEQUENCE new_user_seq
+START WITH 1
+INCREMENT BY 1;
+
+--New user trigger.
+CREATE OR REPLACE TRIGGER new_user_trigger
+BEFORE INSERT ON users
+FOR EACH ROW 
+BEGIN
+ IF :new.u_id IS NULL 
+  THEN
+    SELECT new_user_seq.nextval INTO :new.u_id FROM DUAL;
+  END IF;
+END;
+
+--New page sequence
+CREATE SEQUENCE new_page_seq
+START WITH 1
+INCREMENT BY 1;
+
+--New page trigger.
+CREATE OR REPLACE TRIGGER new_page_trigger
+BEFORE INSERT on page
+FOR EACH ROW
+BEGIN
+if :new.page_id IS NULL
+THEN 
+SELECT new_page_seq.nextVal INTO :new.page_id FROM DUA;
+END IF;
+END;
+
+
+--New comment sequence
+CREATE SEQUENCE new_comment_seq
+START WITH 1
+INCREMENT BY 1;
+
+--New comment trigger
+CREATE OR REPLACE TRIGGER new_comment_trigger
+BEFORE INSERT on comment
+FOR EACH ROW
+BEGIN
+ IF :new.comment_id IS NULL 
+  THEN
+    SELECT new_comment_seq.nextval INTO :new.comment_id FROM DUAL;
+  END IF;
+END;
