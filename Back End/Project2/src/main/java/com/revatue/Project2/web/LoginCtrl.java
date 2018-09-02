@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revatue.Project2.beans.Page;
 import com.revatue.Project2.beans.User;
 import com.revatue.Project2.service.UserService;
 
@@ -55,6 +56,7 @@ public class LoginCtrl {
 		body =  uServ.createUser(body);
 		return new ResponseEntity<User>(body, HttpStatus.CREATED);
 	}
+	
 	@PutMapping("/update/user")
 	public ResponseEntity<User> promoteUser(@RequestBody User body) {
 		User u = new User();
@@ -65,6 +67,7 @@ public class LoginCtrl {
 		BeanUtils.copyProperties(u, obj);
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
 	}
+	
 	
 	
 }

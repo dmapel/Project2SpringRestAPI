@@ -13,9 +13,9 @@ import javax.persistence.Table;
 public class Comments {
 
 	@Id
-	//@SequenceGenerator(name = "USER_SEQ", sequenceName = "USER_SEQ", allocationSize = 1)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "NEW_COMMENT_SEQ", sequenceName = "NEW_COMMENT_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NEW_COMMENT_SEQ")
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "COMMENT_ID")
 	private int cId;
 	

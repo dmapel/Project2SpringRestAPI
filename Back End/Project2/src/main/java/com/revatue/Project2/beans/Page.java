@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,20 +16,24 @@ import javax.persistence.Table;
 public class Page {
 
 	@Id
-	//@SequenceGenerator(name = "USER_SEQ", sequenceName = "USER_SEQ", allocationSize = 1)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "NEW_PAGE_SEQ", sequenceName = "NEW_PAGE_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NEW_PAGE_SEQ")
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PAGE_ID")
 	private int pageId;
 	
 	@Column(name = "CREATED_BY_ID")
 	private int creatorId;
 	
-	@Column(name = "SUMMARY")
-	private Clob summary;
+
+	@Column(name = "SUMMARY", columnDefinition= "CLOB")
+	@Lob
+	private String summary;
 	
-	@Column(name = "BODY")
-	private Clob body;
+	
+	@Column(name = "BODY", columnDefinition= "CLOB")
+	@Lob
+	private String body;
 	
 	@Column(name = "TAG_ID")
 	private int tagId;
@@ -43,7 +49,7 @@ public class Page {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Page(int pageId, int creatorId, Clob summary, Clob body, int tagId, int pageStatus, String time) {
+	public Page(int pageId, int creatorId, String summary, String body, int tagId, int pageStatus, String time) {
 		super();
 		this.pageId = pageId;
 		this.creatorId = creatorId;
@@ -76,19 +82,19 @@ public class Page {
 		this.creatorId = creatorId;
 	}
 
-	public Clob getSummary() {
+	public String getSummary() {
 		return summary;
 	}
 
-	public void setSummary(Clob summary) {
+	public void setSummary(String summary) {
 		this.summary = summary;
 	}
 
-	public Clob getBody() {
+	public String getBody() {
 		return body;
 	}
 
-	public void setBody(Clob body) {
+	public void setBody(String body) {
 		this.body = body;
 	}
 
