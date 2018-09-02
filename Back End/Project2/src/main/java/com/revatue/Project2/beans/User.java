@@ -9,42 +9,41 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USERS")
+@Table(name = "USERS")
 public class User {
-	
+
 	@Id
-	// NEED seq gens here
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="U_ID")
+	@SequenceGenerator(name = "NEW_USER_SEQ", sequenceName = "NEW_USER_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NEW_USER_SEQ")
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "U_ID")
 	private int uId;
-	
-	@Column(name="F_NAME")
+
+	@Column(name = "F_NAME")
 	private String fName;
-	
-	@Column(name="L_NAME")
+
+	@Column(name = "L_NAME")
 	private String lName;
-	
-	@Column(name="USERNAME")
+
+	@Column(name = "USERNAME")
 	private String username;
-	
-	@Column(name="PASSWORD")
+
+	@Column(name = "PASSWORD")
 	private String password;
-	
-	@Column(name="POS_ID")
+
+	@Column(name = "POS_ID")
 	private int posId;
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 
 	@Override
 	public String toString() {
 		return "User [uId=" + uId + ", fName=" + fName + ", lName=" + lName + ", username=" + username + ", password="
 				+ password + ", posId=" + posId + "]";
 	}
-
 
 	public User(int uId, String fName, String lName, String username, String password, int posId) {
 		super();
@@ -103,8 +102,5 @@ public class User {
 	public void setPosId(int posId) {
 		this.posId = posId;
 	}
-	
-	
-	
 
 }
