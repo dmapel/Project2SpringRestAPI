@@ -1,10 +1,17 @@
 package com.revatue.Project2.repo;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.revatue.Project2.beans.User;
 
-public interface UserRepo extends CrudRepository<User, Integer>{
+@Repository("userRepo")
+public interface UserRepo extends JpaRepository<User, Integer>{
 	
-	//Dont know what this does...
+	
+	Optional<User> findByUsernameAndPassword(String username, String password);
+	
+
 }
