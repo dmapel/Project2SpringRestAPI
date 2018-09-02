@@ -19,5 +19,14 @@ public class UserService {
 		return uRep.findById(id);
 		
 	}
+	
+	public Optional<User> testUser(String username, String password) {
+		System.out.println("Service ---user");
+		Optional<User> y = uRep.findByUsernameAndPassword(username, password);
+		return y;
+	}
+	
+	
+	
 
 }
