@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.revatue.Project2.beans.Page;
 import com.revatue.Project2.beans.User;
 import com.revatue.Project2.repo.UserRepo;
 
@@ -40,6 +41,8 @@ public class UserService {
 		uRep.save(body);
 		return body;
 	}
+	
+	
 	
 	public void promoteUser(User id) {
 		uRep.save(id);
