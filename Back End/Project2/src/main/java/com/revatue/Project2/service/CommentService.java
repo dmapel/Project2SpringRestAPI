@@ -14,11 +14,13 @@ public class CommentService {
 	CommentRepo cRep;
 
 	public Comments createComment(Comments body) {
-		System.out.println("Saving " + body);
 		cRep.save(body);
-		System.out.println("Saved " + body);
 		return body;
 
+	}
+	public void editComment(Comments body) {
+		cRep.save(body);
+		
 	}
 
 }
