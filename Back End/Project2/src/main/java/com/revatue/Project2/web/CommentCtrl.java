@@ -1,14 +1,15 @@
 package com.revatue.Project2.web;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revatue.Project2.beans.Comments;
-import com.revatue.Project2.beans.Page;
 import com.revatue.Project2.service.CommentService;
 
 @RestController
@@ -22,6 +23,17 @@ public class CommentCtrl {
 		System.out.println(body);
 		body =  cServ.createComment(body);
 		return new ResponseEntity<Comments>(body, HttpStatus.CREATED);
+	}
+	@PutMapping("/edit/comment")
+	public ResponseEntity<Comments> deleteOrEditComment(@RequestBody Comments body) {
+		System.out.println(body);
+		Comments c = new Comments();
+		BeanUtils.copyProperties(body, c);
+		cServ.editComment(c);
+		
+		Comments obj = new Comments();
+		BeanUtils.copyProperties(c, obj);
+		return new ResponseEntity<Comments>(obj, HttpStatus.OK);
 	}
 
 }
