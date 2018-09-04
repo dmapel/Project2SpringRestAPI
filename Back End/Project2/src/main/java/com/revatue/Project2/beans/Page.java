@@ -27,7 +27,7 @@ public class Page {
 	@Column(name = "PAGE_ID")
 	private int pageId;
 	
-	@OneToMany(mappedBy="comments", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="allComments", fetch=FetchType.LAZY)
 	private Set<Comments> pageComments = new HashSet<Comments>();
 	
 	@Column(name = "CREATED_BY_ID")

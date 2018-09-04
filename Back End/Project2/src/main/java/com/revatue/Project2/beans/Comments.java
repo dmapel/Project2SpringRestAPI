@@ -40,14 +40,16 @@ public class Comments {
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "PAGE_ID", insertable = false, updatable = false)
-	private Page comments;
+	private Page allComments;
 
-//	public Page getComments() {
-//		return comments;
+
+
+//	public Page getAllComments() {
+//		return allComments;
 //	}
 //
-//	public void setComments(Page comments) {
-//		this.comments = comments;
+//	public void setAllComments(Page allComments) {
+//		this.allComments = allComments;
 //	}
 
 	public Comments() {

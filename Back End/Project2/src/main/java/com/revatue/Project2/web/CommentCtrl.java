@@ -1,11 +1,9 @@
 package com.revatue.Project2.web;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,9 +42,9 @@ public class CommentCtrl {
 	}
 
 	@GetMapping("/page/{pageId}/comments")
-	public Comments getAllComments(@PathVariable int pageId) {
+	public List<Comments> getAllComments(@PathVariable int pageId) {
 		System.out.println("Retreveing all from " + pageId);
-		Comments res = cServ.getAllComments(pageId);
+		List<Comments> res = cServ.getAllComments(pageId);
 		System.out.println(res);
 		return res;
 
