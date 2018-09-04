@@ -1,10 +1,13 @@
 package com.revatue.Project2.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.revatue.Project2.beans.Comments;
-import com.revatue.Project2.beans.Page;
 import com.revatue.Project2.repo.CommentRepo;
 
 @SpringBootApplication
@@ -21,6 +24,12 @@ public class CommentService {
 	public void editComment(Comments body) {
 		cRep.save(body);
 		
+	}
+	
+	public Comments getAllComments(int pageId) {
+		
+		
+		return cRep.findByPageId(pageId);
 	}
 
 }

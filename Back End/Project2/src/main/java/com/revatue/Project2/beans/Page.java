@@ -1,15 +1,20 @@
 package com.revatue.Project2.beans;
 
-import java.sql.Clob;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "PAGES")
@@ -21,6 +26,9 @@ public class Page {
 	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PAGE_ID")
 	private int pageId;
+	
+	@OneToMany(mappedBy="comments", fetch=FetchType.LAZY)
+	private Set<Comments> pageComments = new HashSet<Comments>();
 	
 	@Column(name = "CREATED_BY_ID")
 	private int creatorId;
@@ -121,6 +129,16 @@ public class Page {
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+	public Set<Comments> getPageComments() {
+		return pageComments;
+	}
+
+	public void setPageComments(Set<Comments> pageComments) {
+		this.pageComments = pageComments;
+	}
+	
+	
 	
 	
 }
