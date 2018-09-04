@@ -1,5 +1,6 @@
 package com.revatue.Project2.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class CommentService {
 		
 	}
 	
-	public Comments getAllComments(int pageId) {
+	public List<Comments> getAllComments(int pageId) {
 		
 		
 		return cRep.findByPageId(pageId);
