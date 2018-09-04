@@ -1,10 +1,14 @@
 package com.revatue.Project2.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,24 +19,36 @@ public class Comments {
 	@Id
 	@SequenceGenerator(name = "NEW_COMMENT_SEQ", sequenceName = "NEW_COMMENT_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NEW_COMMENT_SEQ")
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	// @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "COMMENT_ID")
 	private int cId;
-	
+
 	@Column(name = "U_ID")
 	private int uId;
-	
+
 	@Column(name = "TIMESUBMISSION")
 	private String time;
-	
+
 	@Column(name = "PAGE_ID")
 	private int pageId;
-	
+
 	@Column(name = "CONTENT")
 	private String content;
-	
+
 	@Column(name = "COMMENT_STATUS_ID")
 	private int commentStatus;
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "PAGE_ID", insertable = false, updatable = false)
+	private Page comments;
+
+//	public Page getComments() {
+//		return comments;
+//	}
+//
+//	public void setComments(Page comments) {
+//		this.comments = comments;
+//	}
 
 	public Comments() {
 		super();
@@ -51,8 +67,8 @@ public class Comments {
 
 	@Override
 	public String toString() {
-		return "Comments [cId=" + cId + ", uId=" + uId + ", time=" + time + ", pageId=" + pageId + ", content="
-				+ content + ", commentStatus=" + commentStatus + "]";
+		return "[cId=" + cId + ", uId=" + uId + ", time=" + time + ", content=" + content + ", commentStatus="
+				+ commentStatus + "]";
 	}
 
 	public int getcId() {
@@ -79,13 +95,13 @@ public class Comments {
 		this.time = time;
 	}
 
-	public int getPageId() {
-		return pageId;
-	}
-
-	public void setPageId(int pageId) {
-		this.pageId = pageId;
-	}
+//	public int getPageId() {
+//		return pageId;
+//	}
+//
+//	public void setPageId(int pageId) {
+//		this.pageId = pageId;
+//	}
 
 	public String getContent() {
 		return content;
@@ -102,7 +118,5 @@ public class Comments {
 	public void setCommentStatus(int commentStatus) {
 		this.commentStatus = commentStatus;
 	}
-	
-	
-	
+
 }
