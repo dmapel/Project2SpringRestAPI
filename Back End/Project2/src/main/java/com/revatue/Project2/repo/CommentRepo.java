@@ -9,6 +9,6 @@ import com.revatue.Project2.beans.Comments;
 
 public interface CommentRepo extends CrudRepository<Comments, Integer>{
 	
-	 List<Comments> findByPageId(int pageId);
+	 List<Comments> findByPageIdAndCommentStatus(int pageId, int commentStatus);
 
 }
