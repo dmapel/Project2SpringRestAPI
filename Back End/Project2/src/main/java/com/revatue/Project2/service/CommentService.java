@@ -30,7 +30,7 @@ public class CommentService {
 	public List<Comments> getAllComments(int pageId) {
 		
 		
-		return cRep.findByPageId(pageId);
+		return cRep.findByPageIdAndCommentStatus(pageId, 1);
 	}
 
 }
