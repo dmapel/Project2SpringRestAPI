@@ -1,5 +1,7 @@
 package com.revatue.Project2.beans;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "COMMENTS")
@@ -27,7 +32,8 @@ public class Comments {
 	private int uId;
 
 	@Column(name = "TIMESUBMISSION")
-	private String time;
+	@UpdateTimestamp
+	private LocalDateTime time;
 
 	@Column(name = "PAGE_ID")
 	private int pageId;
@@ -57,7 +63,7 @@ public class Comments {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Comments(int cId, int uId, String time, int pageId, String content, int commentStatus) {
+	public Comments(int cId, int uId, LocalDateTime time, int pageId, String content, int commentStatus) {
 		super();
 		this.cId = cId;
 		this.uId = uId;
@@ -89,21 +95,21 @@ public class Comments {
 		this.uId = uId;
 	}
 
-	public String getTime() {
+	public LocalDateTime getTime() {
 		return time;
 	}
 
-	public void setTime(String time) {
+	public void setTime(LocalDateTime time) {
 		this.time = time;
 	}
 
-//	public int getPageId() {
-//		return pageId;
-//	}
-//
-//	public void setPageId(int pageId) {
-//		this.pageId = pageId;
-//	}
+	public int getPageId() {
+		return pageId;
+	}
+
+	public void setPageId(int pageId) {
+		this.pageId = pageId;
+	}
 
 	public String getContent() {
 		return content;

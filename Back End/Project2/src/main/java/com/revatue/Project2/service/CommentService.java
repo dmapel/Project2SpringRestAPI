@@ -22,8 +22,10 @@ public class CommentService {
 		return body;
 
 	}
-	public void editComment(Comments body) {
+	public Comments editComment(Comments body) {
 		cRep.save(body);
+		System.out.println("BODY IS " + body);
+		return body;
 		
 	}
 	

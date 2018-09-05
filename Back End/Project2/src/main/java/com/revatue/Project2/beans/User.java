@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "USERS")
 public class User {
@@ -28,7 +31,9 @@ public class User {
 	@Column(name = "USERNAME")
 	private String username;
 
+
 	@Column(name = "PASSWORD")
+	@JsonIgnore
 	private String password;
 
 	@Column(name = "POS_ID")
