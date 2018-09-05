@@ -32,13 +32,9 @@ public class CommentCtrl {
 	@PutMapping("/edit/comment")
 	public ResponseEntity<Comments> deleteOrEditComment(@RequestBody Comments body) {
 		System.out.println(body);
-		Comments c = new Comments();
-		BeanUtils.copyProperties(body, c);
-		cServ.editComment(c);
-
-		Comments obj = new Comments();
-		BeanUtils.copyProperties(c, obj);
-		return new ResponseEntity<Comments>(obj, HttpStatus.OK);
+		body = cServ.editComment(body);
+		System.out.println(body);
+		return new ResponseEntity<Comments>(body, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/page/{pageId}/comments")
