@@ -29,21 +29,17 @@ public class LoginCtrl {
 	@GetMapping("/login/{id}")
 	public Optional<User> login(@PathVariable int id){
 		
-		System.out.println("Login attempted..." + id);
 		Optional<User> u = uServ.getUser(id);
-		System.out.println(u);
 		return u;
 	}
 	@GetMapping("/get/allusers")
 	public List<User> getAllUsers(){
 		List<User> u = uServ.getAllUsers();
-		System.out.println(u);
 		return u;
 	}
 	
 	@PostMapping("/login/user")
 	public Optional<User> testLogin(@RequestBody Map<String, String> body){
-		System.out.println("testing login..." + body);
 		String username = body.get("username");
 		String password = body.get("password");
 		Optional<User> x = uServ.testUser(username, password);
@@ -52,7 +48,6 @@ public class LoginCtrl {
 	}
 	@PostMapping("/create/user")
 	public ResponseEntity<User> createUser(@RequestBody User body) {
-		System.out.println(body);
 		body =  uServ.createUser(body);
 		return new ResponseEntity<User>(body, HttpStatus.CREATED);
 	}

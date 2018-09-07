@@ -19,7 +19,6 @@ public class TagCtrl {
 	
 	@PostMapping("/create/tag")
 	public ResponseEntity<Tag> createTag(@RequestBody Tag body) {
-		System.out.println(body);
 		body =  tServ.createTag(body);
 		return new ResponseEntity<Tag>(body, HttpStatus.CREATED);
 		

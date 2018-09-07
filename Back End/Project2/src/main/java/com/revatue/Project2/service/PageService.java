@@ -15,14 +15,12 @@ public class PageService {
 	PageRepo pRep;
 	
 	public Page createPage(Page body) {
-		System.out.println("Saving " + body);
 		
 		pRep.save(body);
-		System.out.println("Saved " + body);
 		return body;
 	}
 	
-	public void deletePage(Page body) {
-		pRep.save(body);
+	public Page deletePage(Page body) {
+		return pRep.save(body);
 	}
 }

@@ -17,18 +17,15 @@ public class UserService {
 	UserRepo uRep;
 	
 	public Optional<User> getUser(int id) {
-		System.out.println("service -getUser");
 		return uRep.findById(id);
 		
 	}
 	public List<User> getAllUsers() {
-		System.out.println("service -getUser");
 		return (List<User>) uRep.findAll();
 		
 	}
 	
 	public Optional<User> testUser(String username, String password) {
-		System.out.println("Service ---user");
 		Optional<User> y = uRep.findByUsernameAndPassword(username, password);
 		return y;
 	}
