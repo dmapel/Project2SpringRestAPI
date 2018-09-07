@@ -15,7 +15,6 @@ public class PageService {
 	PageRepo pRep;
 	
 	public Page createPage(Page body) {
-		
 		pRep.save(body);
 		return body;
 	}
