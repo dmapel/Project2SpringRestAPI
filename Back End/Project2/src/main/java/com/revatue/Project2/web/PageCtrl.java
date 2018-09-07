@@ -20,22 +20,17 @@ public class PageCtrl {
 	
 	@PostMapping("/create/page")
 	public ResponseEntity<Page> createPage(@RequestBody Page body) {
-		System.out.println(body);
 		body =  pServ.createPage(body);
 		return new ResponseEntity<Page>(body, HttpStatus.CREATED);
 	}
 		
-	@PutMapping("delete/page")
-	public ResponseEntity<Page> deletePage(@RequestBody Page body){
-		System.out.println("Deleting page " + body);
-		Page p = new Page();
-		BeanUtils.copyProperties(body, p);
-		pServ.deletePage(p);
+	@PutMapping("edit/page")
+	public Page deletePage(@RequestBody Page body){
+
+		Page p = pServ.deletePage(body);
+
 		
-		Page obj = new Page();
-		BeanUtils.copyProperties(p, obj);
-		
-		return new ResponseEntity<Page>(obj, HttpStatus.OK);
+		return p;
 	}
 
 }

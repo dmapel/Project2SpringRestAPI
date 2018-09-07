@@ -1,5 +1,6 @@
 package com.revatue.Project2.beans;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +14,8 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 
@@ -50,14 +53,14 @@ public class Page {
 	private int pageStatus;
 	
 	@Column(name = "TIMESUBMISSION")
-	private String time;
+	@UpdateTimestamp
+	private LocalDateTime time;
 
 	public Page() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Page(int pageId, int creatorId, String summary, String body, int tagId, int pageStatus, String time) {
+	public Page(int pageId, int creatorId, String summary, String body, int tagId, int pageStatus, LocalDateTime time) {
 		super();
 		this.pageId = pageId;
 		this.creatorId = creatorId;
@@ -122,11 +125,11 @@ public class Page {
 		this.pageStatus = pageStatus;
 	}
 
-	public String getTime() {
+	public LocalDateTime getTime() {
 		return time;
 	}
 
-	public void setTime(String time) {
+	public void setTime(LocalDateTime time) {
 		this.time = time;
 	}
 

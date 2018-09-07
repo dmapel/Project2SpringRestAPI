@@ -49,18 +49,9 @@ public class Comments {
 	private Page allComments;
 
 
-
-//	public Page getAllComments() {
-//		return allComments;
-//	}
-//
-//	public void setAllComments(Page allComments) {
-//		this.allComments = allComments;
-//	}
-
 	public Comments() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Comments(int cId, int uId, LocalDateTime time, int pageId, String content, int commentStatus) {

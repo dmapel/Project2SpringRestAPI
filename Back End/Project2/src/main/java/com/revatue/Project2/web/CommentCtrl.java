@@ -24,24 +24,19 @@ public class CommentCtrl {
 
 	@PostMapping("/create/comment")
 	public ResponseEntity<Comments> createComment(@RequestBody Comments body) {
-		System.out.println(body);
 		body = cServ.createComment(body);
 		return new ResponseEntity<Comments>(body, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/edit/comment")
 	public ResponseEntity<Comments> deleteOrEditComment(@RequestBody Comments body) {
-		System.out.println(body);
 		body = cServ.editComment(body);
-		System.out.println(body);
 		return new ResponseEntity<Comments>(body, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/page/{pageId}/comments")
 	public List<Comments> getAllComments(@PathVariable int pageId) {
-		System.out.println("Retreveing all from " + pageId);
 		List<Comments> res = cServ.getAllComments(pageId);
-		System.out.println(res);
 		return res;
 
 //		System.out.println("Retreving all comments " + pageId);
