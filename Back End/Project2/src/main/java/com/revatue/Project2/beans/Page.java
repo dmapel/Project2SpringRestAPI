@@ -17,6 +17,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 
 
 @Entity
@@ -48,7 +51,8 @@ public class Page {
 	
 	@Column(name = "TAG_ID")
 	private int tagId;
-	
+
+
 	@Column(name = "PAGE_STATUS_ID")
 	private int pageStatus;
 	
