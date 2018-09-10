@@ -31,7 +31,7 @@
 		    <artifactId>ojdbc</artifactId>
 		    <version>12</version>
 		    <scope>system</scope>
-		    <systemPath>${basedir}/Jars/ojdbc7.jar</systemPath> <!-- must match file name -->
+		    <systemPath>/usr/share/apache-maven/lib/ojdbc7-12.1.0.2.jar</systemPath> <!-- must match file name -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
