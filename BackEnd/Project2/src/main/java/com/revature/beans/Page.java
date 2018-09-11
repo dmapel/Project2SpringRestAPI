@@ -38,6 +38,9 @@ public class Page {
 	@Column(name = "CREATED_BY_ID")
 	private int creatorId;
 	
+	@Column(name = "TITLE")
+	private String title;
+	
 
 	@Column(name = "SUMMARY", columnDefinition= "CLOB")
 	@Lob
@@ -63,10 +66,13 @@ public class Page {
 		super();
 	}
 
-	public Page(int pageId, int creatorId, String summary, String body, int tagId, int pageStatus, LocalDateTime time) {
+	public Page(int pageId, Set<Comments> pageComments, int creatorId, String title, String summary, String body,
+			int tagId, int pageStatus, LocalDateTime time) {
 		super();
 		this.pageId = pageId;
+		this.pageComments = pageComments;
 		this.creatorId = creatorId;
+		this.title = title;
 		this.summary = summary;
 		this.body = body;
 		this.tagId = tagId;
@@ -75,6 +81,15 @@ public class Page {
 	}
 
 
+
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public int getPageId() {
 		return pageId;
@@ -139,12 +154,15 @@ public class Page {
 	public void setPageComments(Set<Comments> pageComments) {
 		this.pageComments = pageComments;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "Page [pageId=" + pageId + ", creatorId=" + creatorId + ", summary=" + summary + ", body=" + body
-				+ ", tagId=" + tagId + ", pageStatus=" + pageStatus + ", time=" + time + "]";
+		return "Page [pageId=" + pageId + ", pageComments=" + pageComments + ", creatorId=" + creatorId + ", title="
+				+ title + ", summary=" + summary + ", body=" + body + ", tagId=" + tagId + ", pageStatus=" + pageStatus
+				+ ", time=" + time + "]";
 	}
+	
+	
+
 	
 }

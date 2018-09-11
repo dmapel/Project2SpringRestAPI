@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.ResponseEntity;
 
 import com.revature.beans.Page;
 import com.revature.beans.User;
@@ -16,8 +17,8 @@ public class UserService {
 	@Autowired
 	UserRepo uRep;
 	
-	public Optional<User> getUser(int id) {
-		return uRep.findById(id);
+	public User getUser(int id) {
+		return uRep.findByUId(id);
 		
 	}
 	public List<User> getAllUsers() {
@@ -41,8 +42,8 @@ public class UserService {
 	
 	
 	
-	public void promoteUser(User id) {
-		uRep.save(id);
+	public User promoteUser(User id) {
+		return uRep.save(id);
 		
 	}
 	

@@ -27,15 +27,22 @@ public class LoginCtrl {
 
 	
 	@GetMapping("/login/{id}")
-	public Optional<User> login(@PathVariable int id){
-		
-		Optional<User> u = uServ.getUser(id);
-		return u;
+	public ResponseEntity<User> login(@PathVariable int id){
+		User u = uServ.getUser(id);
+		if(u == null) {
+			return new ResponseEntity<>(u, HttpStatus.NOT_FOUND);
+		}else {
+		return new ResponseEntity<>(u, HttpStatus.OK);
+		}
 	}
 	@GetMapping("/get/allusers")
-	public List<User> getAllUsers(){
+	public ResponseEntity<List<User>> getAllUsers(){
 		List<User> u = uServ.getAllUsers();
-		return u;
+		if(u == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}else {
+		return new ResponseEntity<>(u, HttpStatus.OK);
+		}
 	}
 	
 	@PostMapping("/login/user")
@@ -49,18 +56,14 @@ public class LoginCtrl {
 	@PostMapping("/create/user")
 	public ResponseEntity<User> createUser(@RequestBody User body) {
 		body =  uServ.createUser(body);
-		return new ResponseEntity<User>(body, HttpStatus.CREATED);
+		return new ResponseEntity<>(body, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/update/user")
 	public ResponseEntity<User> promoteUser(@RequestBody User body) {
-		User u = new User();
-		BeanUtils.copyProperties(body, u);
-		uServ.promoteUser(u);
+		User u = uServ.promoteUser(body);
 		
-		User obj = new User();
-		BeanUtils.copyProperties(u, obj);
-		return new ResponseEntity<User>(obj, HttpStatus.OK);
+		return new ResponseEntity<>(u, HttpStatus.OK);
 	}
 	
 	
