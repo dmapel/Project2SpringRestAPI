@@ -11,6 +11,8 @@ import com.revature.beans.Page;
 public interface PageRepo extends PagingAndSortingRepository<Page, Integer>{
 	
 	
-	Page findAllByTitleAndPageStatus(String title, int pageStatus);
+	List<Page> findAllByTitleAndPageStatus(String title, int pageStatus);
+	
+	List<Page> findAllByTitle(String title);
 
 }

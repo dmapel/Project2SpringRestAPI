@@ -19,13 +19,11 @@ public class PageService {
 	PageRepo pRep;
 
 	public Page createPage(Page body) {
-		System.out.println(body);
 		Page x = pRep.save(body);
-		System.out.println(x);
 		return body;
 	}
 
-	public Page deletePage(Page body) {
+	public Page editPage(Page body) {
 		return pRep.save(body);
 	}
 	
@@ -34,16 +32,9 @@ public class PageService {
 		return pRep.findAll();
 	}
 
-	public Page findPage(String title) {
+	public List<Page> findPage(String title) {
 
-		Iterable<Page> results = pRep.findAll();
-		
-		results.forEach(p -> {
-			if (p.getTitle().contains(title)) {
-				correctPage = p.getTitle();
-				
-			}
-		});
-		return pRep.findAllByTitleAndPageStatus(correctPage, 2);
+
+		return pRep.findAllByTitleAndPageStatus(title, 1);
 	}
 }
