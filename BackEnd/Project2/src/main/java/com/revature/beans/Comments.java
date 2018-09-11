@@ -41,7 +41,7 @@ public class Comments {
 	private String content;
 
 	@Column(name = "COMMENT_STATUS_ID")
-	private int commentStatus;
+	private int commentStatus = 1;
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "PAGE_ID", insertable = false, updatable = false)

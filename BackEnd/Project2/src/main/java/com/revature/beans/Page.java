@@ -51,9 +51,6 @@ public class Page {
 	@Lob
 	private String body;
 	
-	@Column(name = "TAG_ID")
-	private int tagId;
-
 
 	@Column(name = "PAGE_STATUS_ID")
 	private int pageStatus = 1;
@@ -66,8 +63,7 @@ public class Page {
 		super();
 	}
 
-	public Page(int pageId, Set<Comments> pageComments, int creatorId, String title, String summary, String body,
-			int tagId, int pageStatus, LocalDateTime time) {
+	public Page(int pageId, Set<Comments> pageComments, int creatorId, String title, String summary, String body, int pageStatus, LocalDateTime time) {
 		super();
 		this.pageId = pageId;
 		this.pageComments = pageComments;
@@ -75,7 +71,6 @@ public class Page {
 		this.title = title;
 		this.summary = summary;
 		this.body = body;
-		this.tagId = tagId;
 		this.pageStatus = pageStatus;
 		this.time = time;
 	}
@@ -123,14 +118,6 @@ public class Page {
 		this.body = body;
 	}
 
-	public int getTagId() {
-		return tagId;
-	}
-
-	public void setTagId(int tagId) {
-		this.tagId = tagId;
-	}
-
 	public int getPageStatus() {
 		return pageStatus;
 	}
@@ -158,7 +145,7 @@ public class Page {
 	@Override
 	public String toString() {
 		return "Page [pageId=" + pageId + ", pageComments=" + pageComments + ", creatorId=" + creatorId + ", title="
-				+ title + ", summary=" + summary + ", body=" + body + ", tagId=" + tagId + ", pageStatus=" + pageStatus
+				+ title + ", summary=" + summary + ", body=" + body + "pageStatus=" + pageStatus
 				+ ", time=" + time + "]";
 	}
 	

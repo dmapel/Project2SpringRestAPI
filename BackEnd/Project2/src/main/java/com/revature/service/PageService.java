@@ -28,6 +28,11 @@ public class PageService {
 	public Page deletePage(Page body) {
 		return pRep.save(body);
 	}
+	
+	public Iterable<Page> allPages(){
+		
+		return pRep.findAll();
+	}
 
 	public Page findPage(String title) {
 

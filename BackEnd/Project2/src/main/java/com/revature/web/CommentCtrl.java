@@ -25,31 +25,25 @@ public class CommentCtrl {
 	@PostMapping("/create/comment")
 	public ResponseEntity<Comments> createComment(@RequestBody Comments body) {
 		body = cServ.createComment(body);
-		return new ResponseEntity<Comments>(body, HttpStatus.CREATED);
+		return new ResponseEntity<>(body, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/edit/comment")
 	public ResponseEntity<Comments> deleteOrEditComment(@RequestBody Comments body) {
 		body = cServ.editComment(body);
-		return new ResponseEntity<Comments>(body, HttpStatus.CREATED);
+		return new ResponseEntity<>(body, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/page/{pageId}/comments")
-	public List<Comments> getAllComments(@PathVariable int pageId) {
+	public ResponseEntity<List<Comments>> getAllComments(@PathVariable int pageId) {
 		List<Comments> res = cServ.getAllComments(pageId);
-		return res;
-
-//		System.out.println("Retreving all comments " + pageId);
-//		Optional<Comments> c = cServ.getAllComments(pageId);
-//		System.out.println(c);
-//		return c;
+		if(res.size() == 0) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}else {
+			return new ResponseEntity<>(res, HttpStatus.OK);
+		}
 
 	}
 
-	/*
-	 * @GetMapping("/posts/{postId}/comments") public Page<Comment>
-	 * getAllCommentsByPostId(@PathVariable (value = "postId") Long postId, Pageable
-	 * pageable) { return commentRepository.findByPostId(postId, pageable); }
-	 */
 
 }
