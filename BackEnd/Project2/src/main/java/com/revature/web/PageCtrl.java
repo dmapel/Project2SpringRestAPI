@@ -28,19 +28,19 @@ public class PageCtrl {
 		return new ResponseEntity<Page>(body, HttpStatus.CREATED);
 	}
 		
-	@PutMapping("edit/page")
+	@PutMapping("/edit/page")
 	public ResponseEntity<Page> editPage(@RequestBody Page body){
 		Page p = pServ.editPage(body);
 		
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
-	@GetMapping("get/allpages")
+	@GetMapping("/get/allpages")
 	public ResponseEntity<Iterable<Page>> allPages(){
 		Iterable<Page> p = pServ.allPages();
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	
-	@GetMapping("page/search/{title}")
+	@GetMapping("/page/search/{title}")
 	public ResponseEntity<List<Page>> findPage(@PathVariable String title) {
 		List<Page> p = pServ.findPage(title);
 		if(p == null || p.size() == 0) {
