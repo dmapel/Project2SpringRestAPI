@@ -29,12 +29,15 @@ public class PageCtrl {
 	}
 		
 	@PutMapping("edit/page")
-	public Page deletePage(@RequestBody Page body){
+	public ResponseEntity<Page> deletePage(@RequestBody Page body){
 
 		Page p = pServ.deletePage(body);
-
-		
 		return p;
+	}
+	@GetMapping("get/allpages")
+	public ResponseEntity<Iterable<Page>> allPages(){
+		Iterable<Page> p = pServ.allPages();
+		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	
 	@GetMapping("page/search/{title}")
@@ -42,6 +45,7 @@ public class PageCtrl {
 		System.out.println("Searching for title results...." + title);
 		
 		return pServ.findPage(title);
+		//testing
 		
 	}
 
