@@ -2,24 +2,34 @@ package com.revature.service;
 
 import java.util.List;
 
-import javax.sql.rowset.serial.SerialClob;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.revature.beans.Page;
+import com.revature.beans.PageTags;
 import com.revature.repo.PageRepo;
+import com.revature.repo.PageTagsRepo;
 
 @SpringBootApplication
 public class PageService {
 
 	String correctPage;
 	
+	
+	@Autowired
+	PageTagsRepo ptRep;
+	
 	@Autowired
 	PageRepo pRep;
+	
 
 	public Page createPage(Page body) {
 		Page x = pRep.save(body);
+		return body;
+	}
+	
+	public PageTags addTag(PageTags body) {
+		ptRep.save(body);
 		return body;
 	}
 

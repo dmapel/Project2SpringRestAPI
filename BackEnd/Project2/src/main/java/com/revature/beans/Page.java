@@ -4,21 +4,22 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 
 
@@ -58,12 +59,25 @@ public class Page {
 	@Column(name = "TIMESUBMISSION")
 	@UpdateTimestamp
 	private LocalDateTime time;
+	
+	@ManyToMany(fetch = FetchType.LAZY,cascade= { 
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+			
+	})
+	@JoinTable(name= "PAGE_TAGS",
+	joinColumns = { @JoinColumn(name = "PAGE_ID") },
+	inverseJoinColumns = {@JoinColumn(name = "TAG_ID")})
+	private Set<Tag> tags = new HashSet<>();
+			
 
 	public Page() {
 		super();
 	}
 
-	public Page(int pageId, Set<Comments> pageComments, int creatorId, String title, String summary, String body, int pageStatus, LocalDateTime time) {
+
+	public Page(int pageId, Set<Comments> pageComments, int creatorId, String title, String summary, String body,
+			int pageStatus, LocalDateTime time, Set<Tag> tags) {
 		super();
 		this.pageId = pageId;
 		this.pageComments = pageComments;
@@ -73,6 +87,7 @@ public class Page {
 		this.body = body;
 		this.pageStatus = pageStatus;
 		this.time = time;
+		this.tags = tags;
 	}
 
 
@@ -141,13 +156,25 @@ public class Page {
 	public void setPageComments(Set<Comments> pageComments) {
 		this.pageComments = pageComments;
 	}
+	
+	
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
 
 	@Override
 	public String toString() {
 		return "Page [pageId=" + pageId + ", pageComments=" + pageComments + ", creatorId=" + creatorId + ", title="
-				+ title + ", summary=" + summary + ", body=" + body + "pageStatus=" + pageStatus
-				+ ", time=" + time + "]";
+				+ title + ", summary=" + summary + ", body=" + body + ", pageStatus=" + pageStatus + ", time=" + time
+				+ ", tags=" + tags + "]";
 	}
+
+
 	
 	
 
