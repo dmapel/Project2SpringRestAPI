@@ -3,9 +3,10 @@ package com.revature.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.beans.Tag;
+import com.revature.beans.PageTags;
 
-@Repository("tagRepo")
-public interface TagRepo extends JpaRepository<Tag, Integer>{
-
+@Repository("pageTagsRepo")
+public interface PageTagsRepo extends JpaRepository<PageTags, Integer> {
+  
+	
 }

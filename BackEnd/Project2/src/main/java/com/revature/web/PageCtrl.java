@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Page;
+import com.revature.beans.PageTags;
 import com.revature.service.PageService;
 
 @RestController
@@ -27,9 +28,18 @@ public class PageCtrl {
 		body =  pServ.createPage(body);
 		return new ResponseEntity<Page>(body, HttpStatus.CREATED);
 	}
+	
+	@PostMapping("/add/tag")
+	public ResponseEntity<PageTags> addTag(@RequestBody PageTags body){
+		System.out.println(body);
+		body = pServ.addTag(body);
+		return new ResponseEntity<PageTags>(body, HttpStatus.CREATED);
+	}
 		
 	@PutMapping("/edit/page")
 	public ResponseEntity<Page> editPage(@RequestBody Page body){
+		
+		
 		Page p = pServ.editPage(body);
 		
 		return new ResponseEntity<>(p, HttpStatus.OK);
@@ -37,6 +47,7 @@ public class PageCtrl {
 	@GetMapping("/get/allpages")
 	public ResponseEntity<Iterable<Page>> allPages(){
 		Iterable<Page> p = pServ.allPages();
+		System.out.println(p);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	
@@ -49,5 +60,7 @@ public class PageCtrl {
 		return new ResponseEntity<>(p, HttpStatus.OK);
 		}
 	}
+	
+	
 
 }
