@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,60 +22,63 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "PAGES")
-public class Page {
+@JsonInclude(Include.NON_ABSENT)
+public class Page implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5216186391862961233L;
 
 	@Id
 	@SequenceGenerator(name = "NEW_PAGE_SEQ", sequenceName = "NEW_PAGE_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NEW_PAGE_SEQ")
 	@Column(name = "PAGE_ID")
 	private int pageId;
-	
-	@OneToMany(mappedBy="allComments", fetch=FetchType.LAZY)
+
+	@OneToMany(mappedBy = "allComments", fetch = FetchType.LAZY)
 	private Set<Comments> pageComments = new HashSet<Comments>();
-	
+
 	@Column(name = "CREATED_BY_ID")
 	private int creatorId;
-	
+
 	@Column(name = "TITLE")
 	private String title;
-	
 
-	@Column(name = "SUMMARY", columnDefinition= "CLOB")
+	@Column(name = "SUMMARY", columnDefinition = "CLOB")
 	@Lob
 	private String summary;
-	
-	
-	@Column(name = "BODY", columnDefinition= "CLOB")
+
+	@Column(name = "BODY", columnDefinition = "CLOB")
 	@Lob
 	private String body;
-	
 
 	@Column(name = "PAGE_STATUS_ID")
 	private int pageStatus = 1;
-	
+
 	@Column(name = "TIMESUBMISSION")
 	@UpdateTimestamp
 	private LocalDateTime time;
-	
-	@ManyToMany(fetch = FetchType.LAZY,cascade= { 
-			CascadeType.PERSIST,
-			CascadeType.MERGE
-			
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE
+
 	})
-	@JoinTable(name= "PAGE_TAGS",
-	joinColumns = { @JoinColumn(name = "PAGE_ID") },
-	inverseJoinColumns = {@JoinColumn(name = "TAG_ID")})
+	@JoinTable(name = "PAGE_TAGS", joinColumns = {
+			@JoinColumn(name = "PAGE_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "TAG_ID", nullable = false, updatable = false) })
+	@JsonProperty(access = Access.READ_ONLY)
 	private Set<Tag> tags = new HashSet<>();
-			
 
 	public Page() {
 		super();
 	}
-
 
 	public Page(int pageId, Set<Comments> pageComments, int creatorId, String title, String summary, String body,
 			int pageStatus, LocalDateTime time, Set<Tag> tags) {
@@ -89,9 +93,6 @@ public class Page {
 		this.time = time;
 		this.tags = tags;
 	}
-
-
-
 
 	public String getTitle() {
 		return title;
@@ -156,8 +157,6 @@ public class Page {
 	public void setPageComments(Set<Comments> pageComments) {
 		this.pageComments = pageComments;
 	}
-	
-	
 
 	public Set<Tag> getTags() {
 		return tags;
@@ -174,9 +173,4 @@ public class Page {
 				+ ", tags=" + tags + "]";
 	}
 
-
-	
-	
-
-	
 }

@@ -5,10 +5,16 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 @Table(name = "PAGE_TAGS")
+@JsonInclude(Include.NON_ABSENT)
+@IdClass(PageTags.class)
 public class PageTags implements Serializable {
 	
 	/**
@@ -27,10 +33,11 @@ public class PageTags implements Serializable {
 		this.pageId = pageId;
 		this.tagId = tagId;
 	}
-    @Id
+	@Id
 	@Column(name = "PAGE_ID")
 	private int pageId;
 	
+    @Id
 	@Column(name = "TAG_ID")
 	private int tagId;
 

@@ -8,4 +8,6 @@ import com.revature.beans.Tag;
 @Repository("tagRepo")
 public interface TagRepo extends JpaRepository<Tag, Integer>{
 
+	
+	
 }
