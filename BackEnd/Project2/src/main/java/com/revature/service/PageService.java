@@ -54,7 +54,7 @@ public class PageService {
 		return pRep.findAllByTitleAndPageStatus(title, 1);
 	}
 	
-	public PageTags findTags(int id) {
+	public Set<PageTags> findTags(int id) {
 		return pRep.findByPageId(id);
 	}
 }

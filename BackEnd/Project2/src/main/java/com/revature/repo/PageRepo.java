@@ -18,7 +18,7 @@ public interface PageRepo extends JpaRepository<Page, Integer>{
 	
 	List<Page> findAllByTitle(String title);
 	
-	PageTags findByPageId(int id);
+	Set<PageTags> findByPageId(int id);
 
 	
 

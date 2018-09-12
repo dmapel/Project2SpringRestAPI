@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -40,14 +39,7 @@ public class PageCtrl {
 		
 	@PutMapping("/edit/page")
 	public ResponseEntity<Page> editPage(@RequestBody Page body){
-		//int x = body.getPageId();
-		//PageTags pt = pServ.findTags(x);
-		//System.out.println(pt);
-		System.out.println(body);
 		Page p = pServ.editPage(body);
-		//Set<PageTags> i = pServ.addTag(pt);
-		//System.out.println(i);
-		
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	@GetMapping("/get/allpages")
