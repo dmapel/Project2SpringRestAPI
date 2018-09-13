@@ -6,6 +6,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,10 +25,13 @@ public class PageCtrl {
 	PageService pServ;
 	
 	@PostMapping("/create/page")
-	public ResponseEntity<Page> createPage(@RequestBody Page body) {
+	public ResponseEntity<Page> createPage(@RequestBody Page body ) {
         System.out.println("Incoming is " + body);
+        
 		body =  pServ.createPage(body);
-		return new ResponseEntity<Page>(body, HttpStatus.CREATED);
+		
+		
+		return new ResponseEntity<>(body, HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/add/tag")
@@ -40,6 +44,8 @@ public class PageCtrl {
 	@PutMapping("/edit/page")
 	public ResponseEntity<Page> editPage(@RequestBody Page body){
 		Page p = pServ.editPage(body);
+		int x = body.getPageId();
+		pServ.addingTags(x);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 	@GetMapping("/get/allpages")
@@ -57,6 +63,11 @@ public class PageCtrl {
 		}else {
 		return new ResponseEntity<>(p, HttpStatus.OK);
 		}
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public HttpStatus err() {
+		return HttpStatus.NOT_FOUND;
 	}
 	
 	

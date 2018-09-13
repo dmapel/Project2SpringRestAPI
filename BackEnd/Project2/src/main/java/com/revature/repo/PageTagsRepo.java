@@ -10,6 +10,6 @@ import com.revature.beans.PageTags;
 @Repository("pageTagsRepo")
 public interface PageTagsRepo extends JpaRepository<PageTags, Integer> {
   
-	PageTags findByPageId(int id);
 	
+	Set<PageTags> findByPageId(int id);
 }
