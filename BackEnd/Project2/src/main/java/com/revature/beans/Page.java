@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "PAGES")
-@JsonInclude(Include.NON_ABSENT)
+@JsonInclude(Include.NON_NULL)
 public class Page implements Serializable {
 
 	/**

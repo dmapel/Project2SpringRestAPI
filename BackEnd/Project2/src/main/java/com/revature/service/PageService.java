@@ -56,12 +56,16 @@ public class PageService {
 		return pRep.findAllByTitleAndPageStatus(title, 1);
 	}
 	
-	public void addingTags(int id) {
-		Set<PageTags> i = findTags(id);
-		addTag(i);
+	public Set<Tag> addingTags(int id) {
+		System.out.println(id);
+		Set<Tag> i = findTags(id);
+		System.out.println(i);
+		return i;
 	}
 	
-	public Set<PageTags> findTags(int id) {
-		return ptRep.findByPageId(id);
+	public Set<Tag> findTags(int id) {
+		Set<Tag> pt = tRep.findByTagId(id);
+		System.out.println("PT IS " + pt);
+		return pt;
 	}
 }

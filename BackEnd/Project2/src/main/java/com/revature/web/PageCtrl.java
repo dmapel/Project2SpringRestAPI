@@ -1,6 +1,7 @@
 package com.revature.web;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,60 +17,72 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Page;
 import com.revature.beans.PageTags;
+import com.revature.beans.Tag;
 import com.revature.service.PageService;
 
 @RestController
 public class PageCtrl {
-	
+
 	@Autowired
 	PageService pServ;
-	
+
 	@PostMapping("/create/page")
-	public ResponseEntity<Page> createPage(@RequestBody Page body ) {
-        System.out.println("Incoming is " + body);
-        
-		body =  pServ.createPage(body);
-		
-		
+	public ResponseEntity<Page> createPage(@RequestBody Page body) {
+		System.out.println("Incoming is " + body);
+
+		body = pServ.createPage(body);
+
 		return new ResponseEntity<>(body, HttpStatus.CREATED);
 	}
-	
+
 	@PostMapping("/add/tag")
-	public ResponseEntity<Set<PageTags>> addTag(@RequestBody Set<PageTags> body){
+	public ResponseEntity<Set<PageTags>> addTag(@RequestBody Set<PageTags> body) {
 		System.out.println(body);
 		body = pServ.addTag(body);
 		return new ResponseEntity<Set<PageTags>>(body, HttpStatus.CREATED);
 	}
-		
+
 	@PutMapping("/edit/page")
-	public ResponseEntity<Page> editPage(@RequestBody Page body){
-		Page p = pServ.editPage(body);
-		int x = body.getPageId();
-		pServ.addingTags(x);
-		return new ResponseEntity<>(p, HttpStatus.OK);
+	public ResponseEntity<Page> editPage(@RequestBody Map body) {
+		Page p = new Page();
+		List<Integer> x = (List<Integer>) body.get("tags");
+		System.out.println("X is " + x);
+		for (int i = x.size(); i < 0; i--) {
+			System.out.println("The size of the x is " + i);
+		}
+		int tag = (int) body.get("tagId");
+		p.setPageId((int) body.get("pageId"));
+		p.setCreatorId((int) body.get("creatorId"));
+		p.setTitle((String) body.get("title"));
+		p.setSummary((String) body.get("summary"));
+		p.setBody((String) body.get("body"));
+		Set<Tag> pt = pServ.addingTags(tag);
+		p.setTags(pt);
+		Page res = pServ.editPage(p);
+		System.out.println(body);
+		return new ResponseEntity<>(res, HttpStatus.OK);
 	}
+
 	@GetMapping("/get/allpages")
-	public ResponseEntity<Iterable<Page>> allPages(){
+	public ResponseEntity<Iterable<Page>> allPages() {
 		Iterable<Page> p = pServ.allPages();
 		System.out.println(p);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/page/search/{title}")
 	public ResponseEntity<List<Page>> findPage(@PathVariable String title) {
 		List<Page> p = pServ.findPage(title);
-		if(p == null || p.size() == 0) {
+		if (p == null || p.size() == 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}else {
-		return new ResponseEntity<>(p, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(p, HttpStatus.OK);
 		}
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	public HttpStatus err() {
 		return HttpStatus.NOT_FOUND;
 	}
-	
-	
 
 }
