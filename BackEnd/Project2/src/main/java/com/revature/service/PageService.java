@@ -52,10 +52,10 @@ public class PageService {
 		return pRep.findAll();
 	}
 
-	public List<Page> findPage(String title) {
+	public List<Page> findPage(int id) {
 
 
-		return pRep.findAllByTitleAndPageStatus(title, 1);
+		return pRep.findByPageIdAndPageStatus(id, 1);
 	}
 	
 	public Set<Tag> addingTags(int id) {

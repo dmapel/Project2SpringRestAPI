@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class TagService {
 		return body;
 	}
 	
+	public List<Tag> getAllTags(){
+		return tRep.findAll();
+	}
 	
 	
 	

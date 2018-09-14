@@ -13,7 +13,8 @@ public class Logging {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@After("execution(* com.revature.service.PageService.edit*(..))")
+	
+	@After("execution(* com.revature.service.*.*(..))")
 	public void logExecutionTime(JoinPoint joinPoint) throws Throwable {
 		System.out.println("Current Directory = " + System.getProperty("user.dir"));
 		System.out.println("LOGGING");

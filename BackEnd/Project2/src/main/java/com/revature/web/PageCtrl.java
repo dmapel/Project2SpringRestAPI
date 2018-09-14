@@ -71,7 +71,7 @@ public class PageCtrl {
 	}
 
 	@GetMapping("/page/search/{title}")
-	public ResponseEntity<List<Page>> findPage(@PathVariable String title) {
+	public ResponseEntity<List<Page>> findPage(@PathVariable int title) {
 		List<Page> p = pServ.findPage(title);
 		if (p == null || p.size() == 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
