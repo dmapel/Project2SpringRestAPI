@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import com.revature.beans.PageTags;
 import com.revature.beans.Tag;
 import com.revature.service.PageService;
 
+@CrossOrigin
 @RestController
 public class PageCtrl {
 
@@ -45,11 +47,9 @@ public class PageCtrl {
 	@PutMapping("/edit/page")
 	public ResponseEntity<Page> editPage(@RequestBody Map body) {
 		Page p = new Page();
-		List<Integer> x = (List<Integer>) body.get("tags");
-		System.out.println("X is " + x);
-		for (int i = x.size(); i < 0; i--) {
-			System.out.println("The size of the x is " + i);
-		}
+		//List<Tag> x = (List<Tag>) body.get("tags");
+		//pServ.parseList(x); future ease need to be here
+		//System.out.println("x is " + x);
 		int tag = (int) body.get("tagId");
 		p.setPageId((int) body.get("pageId"));
 		p.setCreatorId((int) body.get("creatorId"));

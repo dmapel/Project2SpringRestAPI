@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,7 +20,6 @@ import com.revature.repo.TagRepo;
 public class PageService {
 
 	String correctPage;
-	
 	
 	@Autowired
 	PageTagsRepo ptRep;
@@ -67,5 +68,13 @@ public class PageService {
 		Set<Tag> pt = tRep.findByTagId(id);
 		System.out.println("PT IS " + pt);
 		return pt;
+	}
+	
+	public void parseList(List<Integer> x) {
+		
+		for (int i = 0; i < x.size(); i++) {
+			int y = x.get(i);
+			System.out.println("x " + i + " is: " + y);
+		}
 	}
 }
