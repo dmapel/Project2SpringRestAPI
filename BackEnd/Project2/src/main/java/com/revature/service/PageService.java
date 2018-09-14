@@ -6,8 +6,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.revature.beans.Page;
 import com.revature.beans.PageTags;
@@ -16,7 +16,7 @@ import com.revature.repo.PageRepo;
 import com.revature.repo.PageTagsRepo;
 import com.revature.repo.TagRepo;
 
-@SpringBootApplication
+@Service
 @Component("pageService")
 public class PageService {
 
