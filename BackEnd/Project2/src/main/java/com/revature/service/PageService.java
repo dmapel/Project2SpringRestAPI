@@ -1,13 +1,11 @@
 package com.revature.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-import org.apache.logging.log4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Page;
 import com.revature.beans.PageTags;
@@ -17,6 +15,7 @@ import com.revature.repo.PageTagsRepo;
 import com.revature.repo.TagRepo;
 
 @SpringBootApplication
+@Component("pageService")
 public class PageService {
 
 	String correctPage;
