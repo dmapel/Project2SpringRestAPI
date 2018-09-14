@@ -1,6 +1,8 @@
 package com.revature.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,11 +71,17 @@ public class PageService {
 		return pt;
 	}
 	
-	public void parseList(List<Integer> x) {
-		
-		for (int i = 0; i < x.size(); i++) {
-			int y = x.get(i);
-			System.out.println("x " + i + " is: " + y);
+	public void parseList(List<Tag> x) {
+		Scanner scanner = new Scanner((Readable) x);
+		List<Integer> list = new ArrayList<Integer>();
+		while (scanner.hasNextInt()) {
+		    list.add(scanner.nextInt());
 		}
+		System.out.println("LIST IS " + list);
+		
+//		for (int i = 0; i < x.size(); i++) {
+//			int y = x.get(i);
+//			System.out.println("x " + i + " is: " + y);
+//		}
 	}
 }

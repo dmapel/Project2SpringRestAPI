@@ -19,6 +19,7 @@ public class Logging {
 		System.out.println("LOGGING");
 	    logger.info("Using a service");
 	    logger.info("Allowed execution for {}", joinPoint);
+	    logger.error("This is an error!");
 	}
 }
   

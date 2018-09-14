@@ -20,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -30,6 +32,8 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 @Entity
 @Table(name = "PAGES")
 @JsonInclude(Include.NON_NULL)
+@DynamicUpdate(value=true)
+@SelectBeforeUpdate(value=true)
 public class Page implements Serializable {
 
 	/**

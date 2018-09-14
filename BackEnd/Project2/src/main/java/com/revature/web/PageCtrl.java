@@ -47,9 +47,9 @@ public class PageCtrl {
 	@PutMapping("/edit/page")
 	public ResponseEntity<Page> editPage(@RequestBody Map body) {
 		Page p = new Page();
-		//List<Tag> x = (List<Tag>) body.get("tags");
-		//pServ.parseList(x); future ease need to be here
-		//System.out.println("x is " + x);
+		List<Tag> x = (List<Tag>) body.get("tags");
+		//pServ.parseList(x); //future ease need to be here
+		System.out.println("x is " + x);
 		int tag = (int) body.get("tagId");
 		p.setPageId((int) body.get("pageId"));
 		p.setCreatorId((int) body.get("creatorId"));
