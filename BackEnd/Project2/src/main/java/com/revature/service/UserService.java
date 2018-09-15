@@ -15,6 +15,14 @@ public class UserService {
 	@Autowired
 	UserRepo uRep;
 	
+	public int sum(int[] numbers) {
+        int sum = 0;
+        for (int i: numbers) {
+            sum += i;
+        }
+        return sum;
+    }
+	
 	public User getUser(int id) {
 		return uRep.findByUId(id);
 		

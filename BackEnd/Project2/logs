@@ -508,3 +508,6 @@
 2018-09-14 16:25:56.025 ERROR 3420 --- [http-nio-8080-exec-1] Logging$$EnhancerBySpringCGLIB$$151c97ba : This is an error!2018-09-14 22:56:20 INFO  Logging$$EnhancerBySpringCGLIB$$f094e568:20 - Using a service
 2018-09-14 22:56:20 ERROR Logging$$EnhancerBySpringCGLIB$$f094e568:21 - This is an error!
 2018-09-14 22:56:20 DEBUG Logging$$EnhancerBySpringCGLIB$$f094e568:22 - JUST A TEST WITH DEBUG
+2018-09-15 00:48:47 INFO  Logging$$EnhancerBySpringCGLIB$$9f96f9ab:20 - Using a service
+2018-09-15 00:48:47 ERROR Logging$$EnhancerBySpringCGLIB$$9f96f9ab:21 - This is an error!
+2018-09-15 00:48:47 DEBUG Logging$$EnhancerBySpringCGLIB$$9f96f9ab:22 - JUST A TEST WITH DEBUG
