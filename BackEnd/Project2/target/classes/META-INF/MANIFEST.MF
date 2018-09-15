@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
-Built-By: becklarson-Work
-Build-Jdk: 10.0.2
 Implementation-Title: Project2
 Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Joshua
 Implementation-Vendor-Id: com.revatue
+Build-Jdk: 1.8.0_66
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/Project2
 Created-By: Maven Integration for Eclipse
