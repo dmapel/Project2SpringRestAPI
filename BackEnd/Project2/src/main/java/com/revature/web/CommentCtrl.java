@@ -2,10 +2,11 @@ package com.revature.web;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.beans.Comments;
 import com.revature.service.CommentService;
 
+@CrossOrigin
 @RestController
 public class CommentCtrl {
 
@@ -43,6 +45,11 @@ public class CommentCtrl {
 			return new ResponseEntity<>(res, HttpStatus.OK);
 		}
 
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public HttpStatus err() {
+		return HttpStatus.NOT_FOUND;
 	}
 
 

@@ -32,7 +32,7 @@ public class User {
 
 
 	@Column(name = "PASSWORD")
-	@JsonProperty(access = Access.WRITE_ONLY)
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 
 	@Column(name = "POS_ID")

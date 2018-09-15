@@ -28,5 +28,11 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="Jars/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="Jars/log4j-1.2.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+>>>>>>> 2c28ce3c148aec3cd42405540f855a179bdbc20b
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
