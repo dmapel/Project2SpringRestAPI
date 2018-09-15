@@ -29,5 +29,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="Jars/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="Jars/log4j-1.2.12.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
