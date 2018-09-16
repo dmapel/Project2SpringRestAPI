@@ -16,6 +16,8 @@ public interface PageRepo extends JpaRepository<Page, Integer>{
 	
 	List<Page> findAllByTitleAndPageStatus(String title, int pageStatus);
 	
+	List<Page> findByPageIdAndPageStatus(int id, int pageStatus);
+	
 	List<Page> findAllByTitle(String title);
 	
 

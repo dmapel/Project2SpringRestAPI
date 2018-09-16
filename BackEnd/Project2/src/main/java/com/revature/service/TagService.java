@@ -1,15 +1,14 @@
 package com.revature.service;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Service;
 
-import com.revature.beans.PageTags;
 import com.revature.beans.Tag;
 import com.revature.repo.TagRepo;
 
-@SpringBootApplication
+@Service
 public class TagService {
 
 	@Autowired
@@ -21,6 +20,9 @@ public class TagService {
 		return body;
 	}
 	
+	public List<Tag> getAllTags(){
+		return tRep.findAll();
+	}
 	
 	
 	

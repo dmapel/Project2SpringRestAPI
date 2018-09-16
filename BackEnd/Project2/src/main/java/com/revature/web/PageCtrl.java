@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Page;
 import com.revature.beans.PageTags;
+import com.revature.beans.Picture;
 import com.revature.beans.Tag;
 import com.revature.service.PageService;
 
@@ -43,13 +45,20 @@ public class PageCtrl {
 		body = pServ.addTag(body);
 		return new ResponseEntity<Set<PageTags>>(body, HttpStatus.CREATED);
 	}
+	
+	@PostMapping("/add/picture")
+	public ResponseEntity<Set<Picture>> addPics(@RequestBody Set<Picture> pics){
+		System.out.println(pics);
+		pics = pServ.addPics(pics);
+		return new ResponseEntity<Set<Picture>>(pics, HttpStatus.CREATED);
+	}
 
 	@PutMapping("/edit/page")
 	public ResponseEntity<Page> editPage(@RequestBody Map body) {
 		Page p = new Page();
-		//List<Tag> x = (List<Tag>) body.get("tags");
-		//pServ.parseList(x); future ease need to be here
-		//System.out.println("x is " + x);
+		List<Tag> x = (List<Tag>) body.get("tags");
+		//pServ.parseList(x); //future ease need to be here
+		System.out.println("x is " + x);
 		int tag = (int) body.get("tagId");
 		p.setPageId((int) body.get("pageId"));
 		p.setCreatorId((int) body.get("creatorId"));
@@ -71,7 +80,7 @@ public class PageCtrl {
 	}
 
 	@GetMapping("/page/search/{title}")
-	public ResponseEntity<List<Page>> findPage(@PathVariable String title) {
+	public ResponseEntity<List<Page>> findPage(@PathVariable int title) {
 		List<Page> p = pServ.findPage(title);
 		if (p == null || p.size() == 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -81,8 +90,14 @@ public class PageCtrl {
 	}
 
 	@ExceptionHandler(Exception.class)
-	public HttpStatus err() {
-		return HttpStatus.NOT_FOUND;
+	public ResponseEntity<HttpStatus> err(Exception ex) {
+		HttpStatus res = HttpStatus.INTERNAL_SERVER_ERROR;
+		if (ex instanceof DataIntegrityViolationException) {
+			res = HttpStatus.BAD_REQUEST;
+		}
+		System.out.println("err is " + ex);
+		return new ResponseEntity<>(res);
+
 	}
 
 }

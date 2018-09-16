@@ -1,10 +1,14 @@
 package com.revature.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,9 +29,20 @@ public class TagCtrl {
 		return new ResponseEntity<Tag>(body, HttpStatus.CREATED);
 	}
 	
+	@GetMapping("/getall/tags")
+	public ResponseEntity<List<Tag>> getAllTags(){
+		List<Tag> t = tServ.getAllTags();
+		return new ResponseEntity<List<Tag>>(t, HttpStatus.OK);
+	}
+	
 	@ExceptionHandler(Exception.class)
-	public HttpStatus err() {
-		return HttpStatus.NOT_FOUND;
+	public ResponseEntity<HttpStatus> err(Exception ex) {
+		HttpStatus res = HttpStatus.INTERNAL_SERVER_ERROR;
+		if (ex instanceof DataIntegrityViolationException) {
+			res = HttpStatus.BAD_REQUEST;
+		}
+		return new ResponseEntity<>(res);
+
 	}
 	
 }
