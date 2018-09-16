@@ -60,9 +60,9 @@ public class PageCtrl {
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 
-	@GetMapping("/page/search/{title}")
-	public ResponseEntity<List<Page>> findPage(@PathVariable int title) {
-		List<Page> p = pServ.findPage(title);
+	@GetMapping("/page/{pageId}")
+	public ResponseEntity<List<Page>> findPage(@PathVariable int pageId) {
+		List<Page> p = pServ.findPage(pageId);
 		if (p == null || p.size() == 0) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {

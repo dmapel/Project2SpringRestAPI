@@ -93,3 +93,5 @@
 2018-09-16 00:28:58 INFO  Logging$$EnhancerBySpringCGLIB$$920857b2:21 - Used service execution(Page com.revature.service.PageService.editPage(Page))
 2018-09-16 00:29:07 INFO  Logging$$EnhancerBySpringCGLIB$$920857b2:31 - Page endpoint hit execution(ResponseEntity com.revature.web.PageCtrl.editPage(Page))
 2018-09-16 00:29:07 INFO  Logging$$EnhancerBySpringCGLIB$$920857b2:21 - Used service execution(Page com.revature.service.PageService.editPage(Page))
+2018-09-16 06:36:23 INFO  Logging$$EnhancerBySpringCGLIB$$920857b2:30 - Page endpoint hit execution(ResponseEntity com.revature.web.PageCtrl.findPage(int))
+2018-09-16 06:36:53 INFO  Logging$$EnhancerBySpringCGLIB$$920857b2:30 - Page endpoint hit execution(ResponseEntity com.revature.web.PageCtrl.err(Exception))
