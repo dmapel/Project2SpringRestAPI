@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Page;
 import com.revature.beans.PageTags;
+import com.revature.beans.Picture;
 import com.revature.beans.Tag;
 import com.revature.service.PageService;
 
@@ -42,6 +44,13 @@ public class PageCtrl {
 		System.out.println(body);
 		body = pServ.addTag(body);
 		return new ResponseEntity<Set<PageTags>>(body, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/add/picture")
+	public ResponseEntity<Set<Picture>> addPics(@RequestBody Set<Picture> pics){
+		System.out.println(pics);
+		pics = pServ.addPics(pics);
+		return new ResponseEntity<Set<Picture>>(pics, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/edit/page")
@@ -81,8 +90,14 @@ public class PageCtrl {
 	}
 
 	@ExceptionHandler(Exception.class)
-	public HttpStatus err() {
-		return HttpStatus.NOT_FOUND;
+	public ResponseEntity<HttpStatus> err(Exception ex) {
+		HttpStatus res = HttpStatus.INTERNAL_SERVER_ERROR;
+		if (ex instanceof DataIntegrityViolationException) {
+			res = HttpStatus.BAD_REQUEST;
+		}
+		System.out.println("err is " + ex);
+		return new ResponseEntity<>(res);
+
 	}
 
 }

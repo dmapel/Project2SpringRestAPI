@@ -1,8 +1,6 @@
 package com.revature.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.revature.beans.Page;
 import com.revature.beans.PageTags;
+import com.revature.beans.Picture;
 import com.revature.beans.Tag;
 import com.revature.repo.PageRepo;
 import com.revature.repo.PageTagsRepo;
+import com.revature.repo.PictureRepo;
 import com.revature.repo.TagRepo;
 
 @Service
@@ -31,16 +31,23 @@ public class PageService {
 	@Autowired
 	TagRepo tRep;
 	
+	@Autowired
+	PictureRepo picRep;
 	
 
 	public Page createPage(Page body) {
 		Page x = pRep.save(body);
-		return body;
+		return x;
 	}
 	
 	public Set<PageTags> addTag(Set<PageTags> pt) {
 		ptRep.saveAll(pt);
 		return pt;
+	}
+	
+	public Set<Picture> addPics(Set<Picture> pics){
+		picRep.saveAll(pics);
+		return pics;
 	}
 	
 	public Page editPage(Page body) {

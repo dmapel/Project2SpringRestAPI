@@ -49,6 +49,9 @@ public class Page implements Serializable {
 
 	@OneToMany(mappedBy = "allComments", fetch = FetchType.LAZY)
 	private Set<Comments> pageComments = new HashSet<Comments>();
+	
+	@OneToMany(mappedBy = "pics", fetch = FetchType.LAZY)
+	private Set<Picture> pagePics = new HashSet<Picture>();
 
 	@Column(name = "CREATED_BY_ID")
 	private int creatorId;
@@ -85,11 +88,12 @@ public class Page implements Serializable {
 		super();
 	}
 
-	public Page(int pageId, Set<Comments> pageComments, int creatorId, String title, String summary, String body,
-			int pageStatus, LocalDateTime time, Set<Tag> tags) {
+	public Page(int pageId, Set<Comments> pageComments, Set<Picture> pagePics, int creatorId, String title,
+			String summary, String body, int pageStatus, LocalDateTime time, Set<Tag> tags) {
 		super();
 		this.pageId = pageId;
 		this.pageComments = pageComments;
+		this.pagePics = pagePics;
 		this.creatorId = creatorId;
 		this.title = title;
 		this.summary = summary;
@@ -98,6 +102,8 @@ public class Page implements Serializable {
 		this.time = time;
 		this.tags = tags;
 	}
+
+
 
 	public String getTitle() {
 		return title;
@@ -171,14 +177,21 @@ public class Page implements Serializable {
 		this.tags = tags;
 	}
 	
+	public Set<Picture> getPagePics() {
+		return pagePics;
+	}
 
-
+	public void setPagePics(Set<Picture> pagePics) {
+		this.pagePics = pagePics;
+	}
 
 	@Override
 	public String toString() {
-		return "Page [pageId=" + pageId + ", pageComments=" + pageComments + ", creatorId=" + creatorId + ", title="
-				+ title + ", summary=" + summary + ", body=" + body + ", pageStatus=" + pageStatus + ", time=" + time
-				+ ", tags=" + tags + "]";
+		return "Page [pageId=" + pageId + ", pageComments=" + pageComments + ", pagePics=" + pagePics + ", creatorId="
+				+ creatorId + ", title=" + title + ", summary=" + summary + ", body=" + body + ", pageStatus="
+				+ pageStatus + ", time=" + time + ", tags=" + tags + "]";
 	}
+
+	
 
 }
