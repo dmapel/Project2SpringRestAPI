@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -64,6 +65,23 @@ public class PageService {
 
 	public Set<Tag> findTags(int id) {
 		return tRep.findByTagId(id);
+	}
+
+	public List<List<Page>> findByTags(String tags[]) {
+		List<List<Page>> pages = new ArrayList<List<Page>>();
+		for (int i = 0; i < tags.length; i++) {
+			List<PageTags> x = ptRep.findAllBytagId(Integer.parseInt(tags[i]));
+			for(int b = 0; b < x.size(); b++) {
+				int y = x.get(b).getPageId();
+				List<Page> m = pRep.findAllByPageId(y);
+				pages.add(m);
+			}
+			
+			
+		}
+		System.out.println(pages);
+
+		return pages;
 	}
 
 }

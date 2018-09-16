@@ -1,5 +1,6 @@
 package com.revature.repo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -20,8 +21,7 @@ public interface PageRepo extends JpaRepository<Page, Integer>{
 	
 	List<Page> findAllByTitle(String title);
 	
-
-
+	List<Page> findAllByPageId(int i);
 	
 
 

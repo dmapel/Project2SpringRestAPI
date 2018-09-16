@@ -41,9 +41,9 @@ public class PageCtrl {
 		body = pServ.addTag(body);
 		return new ResponseEntity<Set<PageTags>>(body, HttpStatus.CREATED);
 	}
-	
+
 	@PostMapping("/add/picture")
-	public ResponseEntity<Set<Picture>> addPics(@RequestBody Set<Picture> pics){
+	public ResponseEntity<Set<Picture>> addPics(@RequestBody Set<Picture> pics) {
 		pics = pServ.addPics(pics);
 		return new ResponseEntity<Set<Picture>>(pics, HttpStatus.CREATED);
 	}
@@ -70,7 +70,13 @@ public class PageCtrl {
 		}
 	}
 
-	@ExceptionHandler(Exception.class)
+	@GetMapping("/filter/tags/{tagIds}")
+	public ResponseEntity<List<List<Page>>> filterPages(@PathVariable String[] tagIds) {
+		List<List<Page>> p = pServ.findByTags(tagIds);
+		return new ResponseEntity<>(p, HttpStatus.OK);
+	}
+
+	//@ExceptionHandler(Exception.class)
 	public ResponseEntity<HttpStatus> err(Exception ex) {
 		HttpStatus res = HttpStatus.INTERNAL_SERVER_ERROR;
 		if (ex instanceof DataIntegrityViolationException) {
