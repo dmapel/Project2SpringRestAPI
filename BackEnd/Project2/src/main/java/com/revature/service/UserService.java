@@ -15,7 +15,6 @@ public class UserService {
 	@Autowired
 	UserRepo uRep;
 	
-	
 	public User getUser(int id) {
 		return uRep.findByUId(id);
 		
@@ -25,24 +24,20 @@ public class UserService {
 		
 	}
 	
-//	public Optional<User> testUser(String username, String password) {
-//		Optional<User> y = uRep.findByUsernameAndPassword(username, password);
-//		return y;
-//	}
-	/**
-	 * Creates new users in the DB
-	 * @param body
-	 * @return User
-	 */
+	public Optional<User> testUser(String username, String password) {
+		return uRep.findByUsernameAndPassword(username, password);
+	}
+	
+
 	public User createUser(User body) {
 		uRep.save(body);
 		return body;
 	}
 	
-	
-	
-	public User promoteUser(User id) {
-		return uRep.save(id);
+	public User editUser(User id) {
+		User u = uRep.findByUId(id.getuId());
+		u.setPosId(id.getPosId());
+		return uRep.save(u);
 		
 	}
 	

@@ -14,14 +14,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Swagger {
 
 	@Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.revature"))
-                .paths(PathSelectors.ant("/**"))
-                .build();
-    }
-	
-	
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("com.revature")).paths(PathSelectors.ant("/**")).build();
+	}
 
 }

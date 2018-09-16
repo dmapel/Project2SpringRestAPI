@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
 @Table(name = "USERS")
+@JsonInclude(Include.NON_ABSENT)
 public class User {
 
 	@Id
@@ -30,20 +32,16 @@ public class User {
 	@Column(name = "USERNAME")
 	private String username;
 
-
 	@Column(name = "PASSWORD")
-	//@JsonProperty(access = Access.WRITE_ONLY)
+	// @JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 
 	@Column(name = "POS_ID")
 	private int posId = 1;
-	
 
 	public User() {
 		super();
 	}
-
-	
 
 	public User(int uId, String fName, String lName, String username, String password, int posId) {
 		super();
@@ -86,7 +84,7 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
