@@ -15,13 +15,6 @@ public class UserService {
 	@Autowired
 	UserRepo uRep;
 	
-	public int sum(int[] numbers) {
-        int sum = 0;
-        for (int i: numbers) {
-            sum += i;
-        }
-        return sum;
-    }
 	
 	public User getUser(int id) {
 		return uRep.findByUId(id);
@@ -32,10 +25,10 @@ public class UserService {
 		
 	}
 	
-	public Optional<User> testUser(String username, String password) {
-		Optional<User> y = uRep.findByUsernameAndPassword(username, password);
-		return y;
-	}
+//	public Optional<User> testUser(String username, String password) {
+//		Optional<User> y = uRep.findByUsernameAndPassword(username, password);
+//		return y;
+//	}
 	/**
 	 * Creates new users in the DB
 	 * @param body

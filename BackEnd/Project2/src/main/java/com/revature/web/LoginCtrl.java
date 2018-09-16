@@ -46,14 +46,7 @@ public class LoginCtrl {
 		}
 	}
 	
-	@PostMapping("/login/user")
-	public Optional<User> testLogin(@RequestBody Map<String, String> body){
-		String username = body.get("username");
-		String password = body.get("password");
-		Optional<User> x = uServ.testUser(username, password);
-		return x;
-		
-	}
+
 	@PostMapping("/create/user")
 	public ResponseEntity<User> createUser(@RequestBody User body) {
 		body =  uServ.createUser(body);
@@ -63,6 +56,7 @@ public class LoginCtrl {
 	@PutMapping("/update/user")
 	public ResponseEntity<User> promoteUser(@RequestBody User body) {
 		User u = uServ.promoteUser(body);
+		System.out.println(u);
 		
 		return new ResponseEntity<>(u, HttpStatus.OK);
 	}
