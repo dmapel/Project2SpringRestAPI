@@ -37,7 +37,8 @@ public class UserService {
 	public User editUser(User id) {
 		User u = uRep.findByUId(id.getuId());
 		u.setPosId(id.getPosId());
-		return uRep.save(u);
+		uRep.save(u);
+		return u;
 		
 	}
 	
