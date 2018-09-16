@@ -65,7 +65,6 @@ public class LoginCtrl {
 	@PutMapping("/update/user")
 	public ResponseEntity<User> promoteUser(@RequestBody User body) {
 		User u = uServ.editUser(body);
-
 		return new ResponseEntity<>(u, HttpStatus.OK);
 	}
 
