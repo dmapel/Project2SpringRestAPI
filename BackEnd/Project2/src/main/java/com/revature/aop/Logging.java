@@ -14,7 +14,6 @@ import com.revature.beans.Page;
 public class Logging {
 
 	private Logger logger = Logger.getLogger(this.getClass());
-	Page p;
 
 	@AfterReturning("execution(* com.revature.service.*.*(..))")
 	public void logService(JoinPoint joinPoint) throws Throwable {

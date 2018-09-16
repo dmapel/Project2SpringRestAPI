@@ -15,8 +15,7 @@ public class CommentService {
 	CommentRepo cRep;
 
 	public Comments createComment(Comments body) {
-		cRep.save(body);
-		return body;
+		return cRep.save(body);
 
 	}
 	public Comments editComment(Comments body) {
@@ -25,8 +24,6 @@ public class CommentService {
 	}
 	
 	public List<Comments> getAllComments(int pageId) {
-		
-		
 		return cRep.findByPageIdAndCommentStatus(pageId, 1);
 	}
 

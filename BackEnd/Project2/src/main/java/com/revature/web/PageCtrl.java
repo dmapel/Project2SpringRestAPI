@@ -32,50 +32,31 @@ public class PageCtrl {
 
 	@PostMapping("/create/page")
 	public ResponseEntity<Page> createPage(@RequestBody Page body) {
-		System.out.println("Incoming is " + body);
-
 		body = pServ.createPage(body);
-
 		return new ResponseEntity<>(body, HttpStatus.CREATED);
 	}
 
 	@PostMapping("/add/tag")
 	public ResponseEntity<Set<PageTags>> addTag(@RequestBody Set<PageTags> body) {
-		System.out.println(body);
 		body = pServ.addTag(body);
 		return new ResponseEntity<Set<PageTags>>(body, HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/add/picture")
 	public ResponseEntity<Set<Picture>> addPics(@RequestBody Set<Picture> pics){
-		System.out.println(pics);
 		pics = pServ.addPics(pics);
 		return new ResponseEntity<Set<Picture>>(pics, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/edit/page")
-	public ResponseEntity<Page> editPage(@RequestBody Map body) {
-		Page p = new Page();
-		List<Tag> x = (List<Tag>) body.get("tags");
-		//pServ.parseList(x); //future ease need to be here
-		System.out.println("x is " + x);
-		int tag = (int) body.get("tagId");
-		p.setPageId((int) body.get("pageId"));
-		p.setCreatorId((int) body.get("creatorId"));
-		p.setTitle((String) body.get("title"));
-		p.setSummary((String) body.get("summary"));
-		p.setBody((String) body.get("body"));
-		Set<Tag> pt = pServ.addingTags(tag);
-		p.setTags(pt);
+	public ResponseEntity<Page> editPage(@RequestBody Page p) {
 		Page res = pServ.editPage(p);
-		System.out.println(body);
 		return new ResponseEntity<>(res, HttpStatus.OK);
 	}
 
 	@GetMapping("/get/allpages")
 	public ResponseEntity<Iterable<Page>> allPages() {
 		Iterable<Page> p = pServ.allPages();
-		System.out.println(p);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 
@@ -95,7 +76,6 @@ public class PageCtrl {
 		if (ex instanceof DataIntegrityViolationException) {
 			res = HttpStatus.BAD_REQUEST;
 		}
-		System.out.println("err is " + ex);
 		return new ResponseEntity<>(res);
 
 	}
