@@ -1,4 +1,4 @@
-package com.revature.aop;
+/*package com.revature.aop;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -47,3 +47,4 @@ public class Logging {
 	}
 
 }
+*/
