@@ -49,7 +49,11 @@ public class UserService {
 	
 	
 	public User promoteUser(User id) {
-		return uRep.save(id);
+		int x = id.getuId();
+		User u = uRep.findByUId(x);
+		u.setPosId(id.getPosId());
+		uRep.save(u);
+		return u;
 		
 	}
 	
