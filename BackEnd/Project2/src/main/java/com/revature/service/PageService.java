@@ -76,12 +76,14 @@ public class PageService {
 				List<Page> m = pRep.findAllByPageId(y);
 				pages.add(m);
 			}
-			
-			
 		}
 		System.out.println(pages);
 
 		return pages;
+	}
+	public List<Page> getUserPages(int userId){
+		
+		return pRep.findAllByCreatorId(userId);
 	}
 
 }

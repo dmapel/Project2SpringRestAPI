@@ -75,8 +75,15 @@ public class PageCtrl {
 		List<List<Page>> p = pServ.findByTags(tagIds);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
+	
+	@GetMapping("/user/pages/{userId}")
+	public ResponseEntity<List<Page>> getUserPages(@PathVariable int userId){
+		List<Page> p = pServ.getUserPages(userId);
+		
+		return new ResponseEntity<>(p, HttpStatus.OK);
+	}
 
-	//@ExceptionHandler(Exception.class)
+	@ExceptionHandler(Exception.class)
 	public ResponseEntity<HttpStatus> err(Exception ex) {
 		HttpStatus res = HttpStatus.INTERNAL_SERVER_ERROR;
 		if (ex instanceof DataIntegrityViolationException) {

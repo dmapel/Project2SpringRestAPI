@@ -23,6 +23,8 @@ public interface PageRepo extends JpaRepository<Page, Integer>{
 	
 	List<Page> findAllByPageId(int i);
 	
+	List<Page> findAllByCreatorId(int i);
+	
 
 
 	
