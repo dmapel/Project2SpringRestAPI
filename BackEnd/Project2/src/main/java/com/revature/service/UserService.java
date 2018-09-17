@@ -37,6 +37,7 @@ public class UserService {
 	public User editUser(User id) {
 		User u = uRep.findByUId(id.getuId());
 		u.setPosId(id.getPosId());
+
 		if(id.getfName() != null) {
 			u.setfName(id.getfName());
 		}
@@ -49,6 +50,7 @@ public class UserService {
 		if(id.getPassword()!= null) {
 			u.setPassword(id.getPassword());
 		}
+
 		uRep.save(u);
 		return u;
 		
