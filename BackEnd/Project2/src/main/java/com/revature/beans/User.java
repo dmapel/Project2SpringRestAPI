@@ -37,7 +37,7 @@ public class User {
 	private String password;
 
 	@Column(name = "POS_ID")
-	private int posId = 1;
+	private int posId = 2;
 
 	public User() {
 		super();

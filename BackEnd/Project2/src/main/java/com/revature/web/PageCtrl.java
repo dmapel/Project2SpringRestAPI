@@ -41,9 +41,9 @@ public class PageCtrl {
 		body = pServ.addTag(body);
 		return new ResponseEntity<Set<PageTags>>(body, HttpStatus.CREATED);
 	}
-	
+
 	@PostMapping("/add/picture")
-	public ResponseEntity<Set<Picture>> addPics(@RequestBody Set<Picture> pics){
+	public ResponseEntity<Set<Picture>> addPics(@RequestBody Set<Picture> pics) {
 		pics = pServ.addPics(pics);
 		return new ResponseEntity<Set<Picture>>(pics, HttpStatus.CREATED);
 	}
@@ -68,6 +68,19 @@ public class PageCtrl {
 		} else {
 			return new ResponseEntity<>(p, HttpStatus.OK);
 		}
+	}
+
+	@GetMapping("/filter/tags/{tagIds}")
+	public ResponseEntity<List<List<Page>>> filterPages(@PathVariable String[] tagIds) {
+		List<List<Page>> p = pServ.findByTags(tagIds);
+		return new ResponseEntity<>(p, HttpStatus.OK);
+	}
+	
+	@GetMapping("/user/pages/{userId}")
+	public ResponseEntity<List<Page>> getUserPages(@PathVariable int userId){
+		List<Page> p = pServ.getUserPages(userId);
+		
+		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
 
 	@ExceptionHandler(Exception.class)

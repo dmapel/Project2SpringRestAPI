@@ -37,7 +37,20 @@ public class UserService {
 	public User editUser(User id) {
 		User u = uRep.findByUId(id.getuId());
 		u.setPosId(id.getPosId());
-		return uRep.save(u);
+		if(id.getfName() != null) {
+			u.setfName(id.getfName());
+		}
+		if(id.getlName() != null) {
+			u.setlName(id.getlName());
+		}
+		if(id.getUsername()!= null) {
+			u.setUsername(id.getUsername());
+		}
+		if(id.getPassword()!= null) {
+			u.setPassword(id.getPassword());
+		}
+		uRep.save(u);
+		return u;
 		
 	}
 	
