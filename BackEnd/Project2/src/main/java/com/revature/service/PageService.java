@@ -48,21 +48,17 @@ public class PageService {
 	}
 
 	public Page editPage(Page body) {
-		public Page editPage(Page body) {
-			Page newBody = pRep.findByPageId(body.getPageId());
-
-			if(body.getTitle() != null) {
-				newBody.setTitle(body.getTitle());
-			}
-			if(body.getSummary() != null) {
-				newBody.setSummary(body.getSummary());
-			}
-			if(body.getBody() != null) {
-				newBody.setBody(body.getBody());
-			}
-			return pRep.save(newBody);
+		Page newBody = pRep.findByPageId(body.getPageId());
+		if(body.getTitle() != null) {
+			newBody.setTitle(body.getTitle());
 		}
-		
+		if(body.getSummary() != null) {
+			newBody.setSummary(body.getSummary());
+		}
+		if(body.getBody() != null) {
+			newBody.setBody(body.getBody());
+		}
+		return pRep.save(newBody);
 	}
 
 	public Iterable<Page> allPages() {
