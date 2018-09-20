@@ -95,5 +95,11 @@ public class PageService {
 		
 		return pRep.findAllByCreatorId(userId);
 	}
+	
+	public Page getPage(String title) {
+
+		return pRep.findByTitleAndPageStatus(title, 1);
+
+	}
 
 }
