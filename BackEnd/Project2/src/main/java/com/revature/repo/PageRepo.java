@@ -27,9 +27,6 @@ public interface PageRepo extends JpaRepository<Page, Integer>{
 	
 	List<Page> findAllByCreatorId(int i);
 	
-
-
-	
-	
+	Page findByTitleAndPageStatus(String title, int i);
 
 }
