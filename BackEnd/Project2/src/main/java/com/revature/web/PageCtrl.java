@@ -82,6 +82,13 @@ public class PageCtrl {
 		
 		return new ResponseEntity<>(p, HttpStatus.OK);
 	}
+	
+	@GetMapping("/page/find/{title}")
+	public ResponseEntity<Page> getPage(@PathVariable String title){
+		System.out.println(title);
+		Page p = pServ.getPage(title);
+		return new ResponseEntity<>(p, HttpStatus.OK);
+	}
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<HttpStatus> err(Exception ex) {
